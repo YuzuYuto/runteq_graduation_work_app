@@ -36,6 +36,12 @@
 
 
 ## 使用する技術スタック
-- 使用するフレームワーク　Ruby on Rails
+- 使用するフレームワーク　Ruby on Rails "~> 7.1.0",　Ruby "3.2.0"
+- 使用するgem　
+  ・'sorcery', '0.16.3' 
+  ・'carrierwave', '~> 3.0'
+  ・'kaminari', '~> 1.2'
+  ・'ransack', '~> 4.0'
+  ・'letter_opener_web', '~> 2.0'
 - データベース　PostgreSQ
 - デプロイ先　Heroku
