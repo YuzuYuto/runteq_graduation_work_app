@@ -43,5 +43,6 @@
   ・'kaminari', '~> 1.2'
   ・'ransack', '~> 4.0'
   ・'letter_opener_web', '~> 2.0'
-- データベース　PostgreSQ
+  ・'google-api-client', '~> 0.53'
+- データベース　PostgreSQL
 - デプロイ先　Heroku
