@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>お笑いネタ投稿アプリ</h1>
+
+  <% if user_signed_in? %>
+    <h2>ログイン成功!</h2>
+    <p>ようこそ、<%= current_user.email %>さん</p>
+
+    <%= link_to 'ログアウト', destroy_user_session_path, data: { "turbo-method": :delete } %>
+  <% else %>
+    <h2>ログインしてください</h2>
+    
+    <%= link_to '新規登録', new_user_registration_path %>
+    <%= link_to 'ログイン', new_user_session_path %>
+  <% end %>
+</div>

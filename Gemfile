@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "3.3.5"
+ruby "3.2.0"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.0"
@@ -70,3 +70,5 @@ group :production do
   gem 'pg', '~> 1.1'
 end
 gem "ostruct"
+
+gem "devise"
