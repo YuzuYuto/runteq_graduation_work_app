@@ -1,0 +1,26 @@
+<% content_for(:title, '投稿作成') %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h1>投稿作成</h1>
+
+      <%= form_with model: @post, local: true do |f| %>
+        <div class="mb-3">
+          <%= f.label :title, 'タイトル', class: 'form-label' %>
+          <%= f.text_field :title, class: 'form-control' %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :body, '本文', class: 'form-label' %>
+          <%= f.text_area :body, class: 'form-control', rows: 8 %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.submit '投稿する', class: 'btn btn-primary' %>
+          <%= link_to 'キャンセル', posts_path, class: 'btn btn-secondary ms-2' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
