@@ -47,4 +47,5 @@
   ・'google-api-client', '~> 0.53'
 - データベース　PostgreSQL
 - デプロイ先　Heroku
+
 =======
