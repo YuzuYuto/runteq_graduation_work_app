@@ -1,0 +1,54 @@
+<% content_for(:title, "投稿の編集") %>
+
+<div class="container">
+  <div class="mb-3">
+    <%= link_to post_path(@post), class: 'btn btn-outline-secondary btn-sm' do %>
+      <i class="bi bi-arrow-left"></i> 投稿詳細に戻る
+    <% end %>
+  </div>
+
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <div class="border-bottom pb-3 mb-4">
+        <h1 class="fw-bold text-primary mb-3">
+          <i class="bi bi-pencil-square"></i> 投稿の編集
+        <h1>
+        <small class="text-muted">
+          <i class="bi bi-person-circle"></i> <%= @post.user.email %>
+        </small>
+      </div>
+
+      <%= form_with model: @post, local: true do |f| %>
+        <% if @post.errors.any? %>
+          <div class="alert alert-danger" role="alert">
+            <h5 class="alert-heading">
+              <i class="bi bi-exclamation-triangle-fill"></i>
+              <%= pluralize(@post.errors.count, "件") %>のエラーがあります
+            </h5>
+            <ul class="mb-0">
+              <% @post.errors.full_messages.each do |messag| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="mb-4">
+          <%= f.label :title, 'タイトル', class: 'form-label fw-bold' %>
+          <%= f.text_field :title, class: 'form-control', placeholder: '投稿のタイトルを入力してください' %>
+        </div>
+
+        <div class="mb-4">
+          <%= f.label :body, '本文', class: 'form-label fw-bold' %>
+          <%= f.text_area :body, class: 'form-control', rows: 10, placeholder: '投稿の本文を入力してください', style: 'line-height: 1.8' %>
+        </div>
+
+        <div class="border-top pt-3 d-flex gap-2">
+          <%= f.submit '更新する', class: 'btn btn-primary' %>
+          <%= link_to 'キャンセル', post_path(@post), class: 'btn btn-outline-secondary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+      
