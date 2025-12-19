@@ -1,0 +1,61 @@
+<% content_for(:title, 'ユーザー一覧') %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="mb-4">
+        <i class="bi bi-people"></i> ユーザー一覧
+      </h1>
+
+      <!-- ユーザー一覧カード -->
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <% @users.each do |user| %>
+          <div class="col">
+            <div class="card h-100 shadow-sm">
+              <div class="card-body">
+                <!-- ユーザー情報 -->
+                <div class="d-flex align-items-center mb-3">
+                  <div class="ms-3">
+                    <h5 class="card-title mb-1">
+                      <%= user.email.split('@').first %>
+                    </h5>
+                    <small class="text-muted">
+                      <i class="bi bi-envelope"></i> <%= user.email %>
+                    </small>
+                  </div>
+                </div>
+
+                <!-- 投稿数 -->
+                <div class="mb-3">
+                  <span class="badge bg-secondary">
+                    <i class="bi bi-file-text"></i> 
+                    投稿数: <%= user.posts.count %>
+                  </span>
+                </div>
+
+                <!-- 登録日時 -->
+                <small class="text-muted d-block mb-3">
+                  <i class="bi bi-calendar-check"></i> 
+                  登録日: <%= user.created_at.strftime('%Y/%m/%d') %>
+                </small>
+
+                <!-- 詳細ボタン -->
+                <%= link_to user_path(user), class: 'btn btn-outline-primary btn-sm w-100' do %>
+                  <i class="bi bi-person"></i> プロフィール
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <!-- ユーザーがいない場合 -->
+      <% if @users.empty? %>
+        <div class="alert alert-info text-center mt-4">
+          <i class="bi bi-info-circle"></i> 
+          まだユーザーが登録されていません
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,78 @@
+<% content_for(:title, "#{@user.email.split('@').first}のプロフィール") %>
+
+<div class="container">
+  <div class="row justify-content-center mt-3">
+    <div class="col-md-10">
+      <!-- ユーザー情報カード -->
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <div class="d-flex align-items-center">
+            <!-- ユーザー情報 -->
+            <div class="ms-4">
+              <h2 class="mb-2"><%= @user.email.split('@').first %></h2>
+              <p class="text-muted mb-2">
+                <i class="bi bi-envelope"></i> <%= @user.email %>
+              </p>
+              <p class="text-muted mb-0">
+                <i class="bi bi-calendar-check"></i> 
+                登録日: <%= @user.created_at.strftime('%Y年%m月%d日') %>
+              </p>
+            </div>
+          </div>
+
+          <!-- 統計情報 -->
+          <div class="mt-4 pt-3 border-top">
+            <span class="badge bg-primary me-2">
+              <i class="bi bi-file-text"></i> 投稿数: <%= @user.posts.count %>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 投稿一覧セクション -->
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+          <h5 class="mb-0">
+            <i class="bi bi-file-text"></i> 
+            <%= @user.email.split('@').first %>さんの投稿
+          </h5>
+        </div>
+        <div class="card-body">
+          <% if @user.posts.any? %>
+            <div class="list-group">
+              <% @user.posts.order(created_at: :desc).each do |post| %>
+                <div class="list-group-item list-group-item-action">
+                  <div class="d-flex w-100 justify-content-between align-items-center">
+                    <h6 class="mb-1">
+                      <%= link_to post.title, post_path(post), class: 'text-decoration-none' %>
+                    </h6>
+                    <small class="text-muted">
+                      <%= time_ago_in_words(post.created_at) %>前
+                    </small>
+                  </div>
+                  <% if post.body.present? %>
+                    <p class="mb-1 text-muted">
+                      <%= truncate(post.body, length: 100) %>
+                    </p>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+          <% else %>
+            <div class="text-center py-5">
+              <i class="bi bi-inbox display-1 text-muted"></i>
+              <p class="text-muted mt-3">まだ投稿がありません</p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <!-- 戻るボタン -->
+      <div class="mt-4">
+        <%= link_to users_path, class: 'btn btn-outline-secondary' do %>
+          <i class="bi bi-arrow-left"></i> ユーザー一覧に戻る
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
