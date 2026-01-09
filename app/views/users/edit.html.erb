@@ -1,0 +1,57 @@
+<% content_for(:title, 'プロフィール編集') %>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+          <h2 class="mb-0">
+            <i class="bi bi-person-gear"></i> プロフィール編集
+          </h2>
+        </div>
+        
+        <div class="card-body">
+          <%= form_with(model: @user, local: true) do |f| %>
+            <!-- エラーメッセージ表示 -->
+            <% if @user.errors.any? %>
+              <div class="alert alert-danger">
+                <h5 class="alert-heading">
+                  <i class="bi bi-exclamation-triangle"></i> 
+                  <%= pluralize(@user.errors.count, "件のエラー") %>が発生しました
+                </h5>
+                <ul class="mb-0">
+                  <% @user.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+            <!-- メールアドレス -->
+            <div class="mb-3">
+              <%= f.label :email, 'メールアドレス', class: 'form-label' %>
+              <%= f.email_field :email, class: 'form-control', placeholder: 'example@example.com' %>
+            </div>
+
+            <!-- ボタン -->
+            <div class="d-flex gap-2">
+              <%= f.submit '更新する', class: 'btn btn-primary flex-fill' %>
+              <%= link_to 'キャンセル', user_path(@user), class: 'btn btn-secondary flex-fill' %>
+            </div>
+          <% end %>
+
+          <!-- パスワード変更リンク -->
+          <div class="mt-4 pt-3 border-top">
+            <p class="text-muted mb-2">
+              <i class="bi bi-key"></i> パスワードを変更したい場合
+            </p>
+            <%= link_to 'パスワード変更ページへ', edit_user_registration_path, class: 'btn btn-outline-warning btn-sm' %>
+            <small class="d-block mt-2 text-muted">
+              ※ パスワードの変更はDeviseの専用ページで行います
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
