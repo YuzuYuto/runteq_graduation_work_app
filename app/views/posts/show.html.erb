@@ -1,6 +1,6 @@
 <% content_for(:title, @post.title) %>
 
-<div class="container">
+<div class="container mt-4" style="max-width: 800px;">
   <div class="mb-3">
     <%= link_to posts_path, class: 'btn btn-outline-secondary btn-sm' do %>
       <i class="bi bi-arrow-left"></i> 投稿一覧に戻る
@@ -25,6 +25,19 @@
           <%= @post.body %>
         </div>
       </div>
+
+      <!-- YouTube埋め込み -->
+      <% if @post.youtube_url.present? && @post.youtube_video_id.present? %>
+        <div class="ratio ratio-16x9 mb-4">
+          <iframe 
+            src="https://www.youtube.com/embed/<%= @post.youtube_video_id %>" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      <% end %>
 
       <% if @post.user == current_user %>
         <div class="border-top pt-3 d-flex gap-2">

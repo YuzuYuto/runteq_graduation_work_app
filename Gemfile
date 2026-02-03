@@ -72,3 +72,5 @@ end
 gem "ostruct"
 
 gem "devise"
+
+gem 'devise-i18n'

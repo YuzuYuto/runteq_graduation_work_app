@@ -22,7 +22,13 @@
       <div style="color: red;"><%= alert %></div>
     <% end %>
     
-    <%= yield %>
+    <% if user_signed_in? && !(controller_name == 'sessions' || controller_name == 'registrations') %>
+      <%= render "shared/header" %>
+    <% end %>
+    
+    <main class="main-content">
+      <%= yield %>
+    </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   </body>

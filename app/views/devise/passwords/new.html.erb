@@ -1,0 +1,23 @@
+<div class="devise-container">
+  <div class="devise-card">
+    <h2 class="devise-title">パスワードリセット</h2>
+    <p class="devise-description">登録されたメールアドレスを入力してください。<br>パスワード再設定用のリンクをお送りします。</p>
+
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="devise-form-group">
+        <%= f.label :email, "メールアドレス", class: "devise-label" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "devise-input", placeholder: "example@email.com" %>
+      </div>
+
+      <div class="devise-button-wrapper">
+        <%= f.submit "送信", class: "devise-button" %>
+      </div>
+    <% end %>
+
+    <div class="devise-links">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 <% content_for(:title, 'ユーザー一覧') %>
 
-<div class="container">
+<div class="container mt-4" style="max-width: 800px;">
   <div class="row">
     <div class="col-12">
       <h1 class="mb-4">
@@ -8,41 +8,41 @@
       </h1>
 
       <!-- ユーザー一覧カード -->
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <div class="row row-cols-1 g-4">
         <% @users.each do |user| %>
           <div class="col">
-            <div class="card h-100 shadow-sm">
-              <div class="card-body">
+            <div class="card shadow-sm">
+              <div class="card-body p-4">
                 <!-- ユーザー情報 -->
-                <div class="d-flex align-items-center mb-3">
-                  <div class="ms-3">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                  <div>
                     <h5 class="card-title mb-1">
                       <%= user.email.split('@').first %>
                     </h5>
                     <small class="text-muted">
                       <i class="bi bi-envelope"></i> <%= user.email %>
-                    </small>
+                        </small>
                   </div>
-                </div>
-
-                <!-- 投稿数 -->
-                <div class="mb-3">
+                  
+                  <!-- 投稿数バッジ -->
                   <span class="badge bg-secondary">
                     <i class="bi bi-file-text"></i> 
                     投稿数: <%= user.posts.count %>
                   </span>
                 </div>
 
-                <!-- 登録日時 -->
-                <small class="text-muted d-block mb-3">
-                  <i class="bi bi-calendar-check"></i> 
-                  登録日: <%= user.created_at.strftime('%Y/%m/%d') %>
-                </small>
+                <!-- 登録日時とボタンを横並び -->
+                <div class="d-flex align-items-center justify-content-between">
+                  <small class="text-muted">
+                    <i class="bi bi-calendar-check"></i> 
+                    登録日: <%= user.created_at.strftime('%Y/%m/%d') %>
+                  </small>
 
-                <!-- 詳細ボタン -->
-                <%= link_to user_path(user), class: 'btn btn-outline-primary btn-sm w-100' do %>
-                  <i class="bi bi-person"></i> プロフィール
-                <% end %>
+                  <!-- 詳細ボタン -->
+                  <%= link_to user_path(user), class: 'btn btn-outline-primary btn-sm' do %>
+                    <i class="bi bi-person"></i> プロフィール
+                  <% end %>
+                </div>
               </div>
             </div>
           </div>
