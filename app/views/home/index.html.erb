@@ -1,14 +1,18 @@
-<div class="container">
+<% content_for :body_class, 'home' %>
+
+<div class="container mt-4" style="max-width: 800px;">
   <h1>お笑いネタ投稿アプリ</h1>
 
   <% if user_signed_in? %>
-    <%= render 'shared/header' %>
     <h2>ログイン成功!</h2>
     <p>ようこそ、<%= current_user.email %>さん</p>
 
-    <%= link_to 'ログアウト', destroy_user_session_path,
-        data: { "turbo-method": :delete },
-        class: 'btn btn-outline-danger' %>
+    <div class="d-flex justify-content-center mt-4">
+      <%= link_to 'ログアウト', destroy_user_session_path,
+          data: { "turbo-method": :delete },
+          class: 'btn btn-outline-danger' %>
+    </div>
+
   <% else %>
     <h2>ログインしてください</h2>
 

@@ -1,6 +1,6 @@
 <% content_for(:title, "投稿の編集") %>
 
-<div class="container">
+<div class="container mt-4" style="max-width: 800px;">
   <div class="mb-3">
     <%= link_to post_path(@post), class: 'btn btn-outline-secondary btn-sm' do %>
       <i class="bi bi-arrow-left"></i> 投稿詳細に戻る
@@ -41,6 +41,18 @@
         <div class="mb-4">
           <%= f.label :body, '本文', class: 'form-label fw-bold' %>
           <%= f.text_area :body, class: 'form-control', rows: 10, placeholder: '投稿の本文を入力してください', style: 'line-height: 1.8' %>
+        </div>
+
+        <!-- YouTube埋め込み用フィールド -->
+        <div class="mb-3">
+          <%= f.label :youtube_url, 'YouTube動画URL', class: 'form-label' %>
+          <%= f.text_field :youtube_url, 
+              class: 'form-control', 
+              placeholder: 'https://youtu.be/dZ2dcC4OnQE' %>
+          <div class="form-text">
+            <i class="bi bi-info-circle"></i> 
+            YouTube動画のURLを入力すると、投稿に埋め込まれます(任意)
+          </div>
         </div>
 
         <div class="border-top pt-3 d-flex gap-2">

@@ -1,0 +1,255 @@
+/* ログイン・新規登録画面全体のスタイル */
+.devise-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+}
+  
+/* フォームのカード */
+.devise-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  padding: 3rem;
+  max-width: 600px;
+  width: 100%;
+  animation: fadeInUp 0.6s ease;
+}
+
+/* フェードインアニメーション */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* タイトル */
+.devise-title {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: bold;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+  
+/* フォームグループ */
+.devise-form-group {
+  margin-bottom: 1.8rem;
+}
+  
+/* ラベル */
+.devise-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+/* パスワードのヒント */
+.devise-hint {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: normal;
+  margin-left: 0.5rem;
+}
+  
+/* 入力フィールド */
+.devise-input {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+  
+.devise-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.devise-input::placeholder {
+  color: #999;
+  font-size: 1rem;
+}
+  
+/* チェックボックス */
+.devise-checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.8rem;
+}
+  
+.devise-checkbox-input {
+  margin-right: 0.6rem;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+  
+.devise-checkbox-label {
+  font-size: 1rem;
+  color: #555;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* ボタンのラッパー */
+.devise-button-wrapper {
+  margin-top: 1.5rem;
+}
+  
+/* ボタン */
+.devise-button {
+  width: 100%;
+  padding: 1rem 3rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+  
+.devise-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+  
+.devise-button:active {
+  transform: translateY(0);
+} 
+
+/* リンク */
+.devise-links {
+  margin-top: 2rem;
+  text-align: center;
+}
+  
+.devise-links a {
+  color: #667eea;
+  text-decoration: none;
+  font-size: 1rem;
+  line-height: 2.2;
+  display: block;
+  transition: color 0.2s;
+}
+  
+.devise-links a:hover {
+  text-decoration: underline;
+  color: #5568d3;
+}
+  
+/* エラーメッセージ */
+#error_explanation {
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}  
+
+#error_explanation h2 {
+  color: #721c24;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+  
+/* エラーメッセージ */
+#error_explanation {
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+  
+#error_explanation h2 {
+  color: #721c24;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+  
+#error_explanation ul {
+  margin: 0;
+  padding-left: 1.5rem;
+  color: #721c24;
+}
+  
+#error_explanation li {
+  margin-bottom: 0.3rem;
+}
+
+/* フラッシュメッセージ */
+.alert {
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+  
+.alert-success {
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  color: #155724;
+}
+  
+.alert-danger {
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+}
+  
+.alert-warning {
+  background-color: #fff3cd;
+  border: 1px solid #ffeaa7;
+  color: #856404;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+.devise-card {
+  padding: 2rem;
+}
+  
+.devise-title {
+  font-size: 2rem;
+}
+
+/* 説明文 */
+.devise-description {
+  text-align: center;
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+  
+.devise-input {
+  font-size: 1rem;
+  padding: 0.8rem;
+}
+  
+.devise-button {
+  font-size: 1.1rem;
+  padding: 0.9rem 2rem;
+}
+}
