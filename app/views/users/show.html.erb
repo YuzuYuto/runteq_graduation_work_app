@@ -30,14 +30,16 @@
           <% end %>
 
           <!-- 削除ボタン -->
-          <%= button_to user_path(@user), 
-                method: :delete,
-                data: { 
-                  turbo_method: :delete,
-                  turbo_confirm: '本当に削除しますか?この操作は取り消せません。'
-                },
-                class: 'btn btn-outline-danger mt-3' do %>
-              <i class="bi bi-trash"></i> アカウント削除
+          <% if @user == current_user %>
+            <%= button_to user_path(@user), 
+                  method: :delete,
+                  data: { 
+                    turbo_method: :delete,
+                    turbo_confirm: '本当に削除しますか?この操作は取り消せません。'
+                  },
+                  class: 'btn btn-outline-danger mt-3' do %>
+                <i class="bi bi-trash"></i> アカウント削除
+            <% end %>
           <% end %>
 
           <!-- 統計情報 -->
